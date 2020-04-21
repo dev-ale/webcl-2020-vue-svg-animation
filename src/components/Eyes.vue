@@ -23,34 +23,47 @@
 
 
         </div>
-        <p>{{infoMessage}}</p>
+        <p></p>
+        <h1>
+            {{infoMessage}}
+        </h1>
+        <h1>
+            Hi,
+            <span class="typer" id="first-typer" data-words="please click me,poke me in my right eye" data-colors="#cd2032,#cc1e81,#6e6abb"></span>
+            <span class="cursor" data-owner="first-typer"></span>
+        </h1>
     </div>
 </template>
 
 <script>
     export default {
         name: 'HelloWorld',
-            data:() => ({
-                color: '#EDD60C',
-                happyStatus: false,
-                infoMessage: 'not happy',
-                eyepokedStatus: false
-            }),
-            methods: {
-                toggleHappy() {
-                    this.happyStatus = !this.happyStatus;
+        created() {
+            let typer = document.createElement('script');    typer.setAttribute('src',"https://unpkg.com/typer-dot-js@0.1.0/typer.js");
+            document.head.appendChild(typer);
+        },
+        data:() => ({
+            color: '#EDD60C',
+            happyStatus: false,
+            infoMessage: 'not happy',
+            eyepokedStatus: false
+        }),
+        methods: {
+            toggleHappy() {
+                this.happyStatus = !this.happyStatus;
+                this.infoMessage = (this.happyStatus ? 'is happy' : 'not happy');
+            },
+            pokeEye() {
+                this.infoMessage = 'Eye poke!';
+                this.eyepokedStatus = true;
+                this.happyStatus = false;
+                setTimeout(() => {
+                    this.eyepokedStatus = false;
                     this.infoMessage = (this.happyStatus ? 'is happy' : 'not happy');
-                },
-                pokeEye() {
-                    this.infoMessage = 'Eye poke!';
-                    this.eyepokedStatus = true;
-                    setTimeout(() => {
-                        this.eyepokedStatus = false;
-                        this.infoMessage = (this.happyStatus ? 'is happy' : 'not happy');
-                        }, 2000);
+                    }, 2000);
 
-                }
             }
+        }
     }
 
 </script>
