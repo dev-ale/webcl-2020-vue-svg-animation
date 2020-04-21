@@ -3,18 +3,27 @@
         <p>click me!</p>
         <div>
             <svg width=50% height=50% viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                // Hintergrund
                 <circle @click="toggleHappy" cx="100" cy="100" r="100" :fill="color"/>
+                // Linkes Auge
                 <circle cx="62" cy="50" r="15" fill="white"/>
-                <circle cx="135" cy="50" r="15" fill="white"/>
+                // Rechtes Auge auf
+                <circle v-if="!this.eyepokedStatus" @click="pokeEye" cx="135" cy="50" r="15" fill="white"/>
+                // Rechtes Auge zu
+                <ellipse v-if="this.eyepokedStatus" cx="130.5" cy="48" rx="15" ry="1" fill="white"/>
+                // Mund gerade
                 <line v-if="!this.happyStatus" x1="30" y1="123.5" x2="170" y2="123.5" stroke="white" stroke-width="7"/>
+                // Mund Happy
                 <path v-if="this.happyStatus" d="M30 121.5L46.3813 141.189C52.655 148.73 61.0079 154.258 70.4003 157.086L85.5827 161.658C94.9857 164.49 105.014 164.49 114.417 161.658L129.6 157.086C138.992 154.258 147.345 148.73 153.619 141.189L170 121.5" stroke="white" stroke-width="7"/>
-                <circle :class="{ 'moving-eyes': happyStatus}" cx="137.5" cy="57.5" r="4.5" fill="black"/>
+                // Pupille Rechts
+                <circle v-if="!this.eyepokedStatus" :class="{ 'moving-eyes': happyStatus}" cx="137.5" cy="57.5" r="4.5" fill="black"/>
+                // Pupille Links
                 <circle :class="{ 'moving-eyes': happyStatus}" cx="66.5" cy="57.5" r="4.5" fill="black"/>
             </svg>
 
 
         </div>
-        <p>{{happyMessage}}</p>
+        <p>{{infoMessage}}</p>
     </div>
 </template>
 
@@ -24,12 +33,22 @@
             data:() => ({
                 color: '#EDD60C',
                 happyStatus: false,
-                happyMessage: 'not happy'
+                infoMessage: 'not happy',
+                eyepokedStatus: false
             }),
             methods: {
                 toggleHappy() {
                     this.happyStatus = !this.happyStatus;
-                    this.happyMessage = (this.happyStatus ? 'is happy' : 'not happy');
+                    this.infoMessage = (this.happyStatus ? 'is happy' : 'not happy');
+                },
+                pokeEye() {
+                    this.infoMessage = 'Eye poke!';
+                    this.eyepokedStatus = true;
+                    setTimeout(() => {
+                        this.eyepokedStatus = false;
+                        this.infoMessage = (this.happyStatus ? 'is happy' : 'not happy');
+                        }, 2000);
+
                 }
             }
     }
