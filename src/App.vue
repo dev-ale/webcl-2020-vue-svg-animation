@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <Eyes/>
+    <Info/>
   </div>
 </template>
 
 <script>
 import Eyes from './components/Eyes.vue'
+import Info from "./components/Info";
 
 export default {
   name: 'App',
   components: {
-    Eyes
+    Eyes,
+    Info
   }
 }
 </script>

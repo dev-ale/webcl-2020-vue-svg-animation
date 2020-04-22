@@ -1,5 +1,9 @@
 <template>
     <div>
+        <header class="header">
+            <p class="musicButton" @click="startMusic">playing music</p>
+            <p class="windButtonButton" @click="startWind">make some wind</p>
+        </header>
         <h2>
             {{infoMessage}}
         </h2>
@@ -78,26 +82,11 @@
                 </g>
             </svg>
         </div>
-<!--    Typer JS Text -->
-        <h1>
-            Hi, <br>
-            <span class="typer" id="first-typer" data-words="play some sound, poke me in my right eye" data-colors="#cd2032,#cc1e81,#6e6abb"></span>
-            <span class="cursor" data-owner="first-typer"></span>
-        </h1>
-
-
-        <p @click="startMusic">playing music</p>
-        <p @click="startWind">make some wind</p>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'HelloWorld',
-        created() {
-            let typer = document.createElement('script');    typer.setAttribute('src',"https://unpkg.com/typer-dot-js@0.1.0/typer.js");
-            document.head.appendChild(typer);
-        },
         data:() => ({
             color: '#EDD60C',
             happyStatus: false,
@@ -194,7 +183,14 @@
         80%  {    transform: rotateX(0deg)   }
         90%  {   transform: rotateX(5deg)    }
         100% {   transform: rotateX(10deg)    }
-
+    }
+    .musicButton {
+        float: left;
+        margin-left: 20px;
+    }
+    .windButtonButton {
+        float: right;
+        margin-right: 20px;
     }
 
 </style>
