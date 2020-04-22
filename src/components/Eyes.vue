@@ -104,12 +104,14 @@
         <div>
             <svg width="284px" height="357px" viewBox="0 0 284 357" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
+                    <path d="M95,144.5 C95,154.717268 103.282732,163 113.5,163 C123.717268,163 132,154.717268 132,144.5" id="path-11"></path>
                     <circle id="path-1" cx="118.5" cy="158.5" r="17.5"></circle>
                     <filter x="-20.0%" y="-14.3%" width="140.0%" height="140.0%" filterUnits="objectBoundingBox" id="filter-2">
                         <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
                         <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
                         <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
                     </filter>
+                    <path d="M150,145 C150,155.217268 158.282732,163.5 168.5,163.5 C178.717268,163.5 187,155.217268 187,145" id="path-33"></path>
                     <circle id="path-3" cx="173.5" cy="158.5" r="17.5"></circle>
                     <circle id="path-5" cx="117.5" cy="234.5" r="12.5"></circle>
                     <filter x="-20.0%" y="-14.3%" width="140.0%" height="140.0%" filterUnits="objectBoundingBox" id="filter-4">
@@ -136,23 +138,31 @@
                             </g>
 
                             <!-- Auge Links -->
-                            <g id="Oval">
+                            <g v-if="!this.sleepStatus" id="Oval">
                                 <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
                                 <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
                             </g>
 
                             <!-- Auge Rechts -->
-                            <g v-if="!this.eyepokedStatus" @click="pokeEye" id="Oval">
+                            <g v-if="!this.eyepokedStatus && !this.sleepStatus" @click="pokeEye" id="Oval">
                                 <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
                                 <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
                             </g>
 
                             <!-- Auge Rechts zu -->
-                            <line v-if="this.eyepokedStatus" x1="157.5" y1="158.5" x2="187.5" y2="158.5" id="Line" stroke="#4A4A4A" stroke-width="5" stroke-linecap="round"></line>
+                            <line v-if="this.eyepokedStatus && !this.sleepStatus" x1="157.5" y1="158.5" x2="187.5" y2="158.5" id="Line" stroke="#4A4A4A" stroke-width="5" stroke-linecap="round"></line>
 
                             <!-- Pupillen -->
-                            <circle :class="{ 'animate-eyes': happyStatus}" id="Oval" stroke="#979797" fill="#4A4A4A" cx="114" cy="158" r="4"></circle>
-                            <circle v-if="!this.eyepokedStatus" :class="{ 'animate-eyes': happyStatus}" id="Oval" stroke="#979797" fill="#4A4A4A" cx="169" cy="158" r="4"></circle>
+                            <circle v-if="!this.sleepStatus" :class="{ 'animate-eyes': happyStatus}" id="Oval" stroke="#979797" fill="#4A4A4A" cx="114" cy="158" r="4"></circle>
+                            <circle v-if="!this.eyepokedStatus && !this.sleepStatus" :class="{ 'animate-eyes': happyStatus}" id="Oval" stroke="#979797" fill="#4A4A4A" cx="169" cy="158" r="4"></circle>
+
+                            <!-- Augen schlafen -->
+                            <g v-if="this.sleepStatus" id="augelinks" stroke-linecap="round">
+                                <use stroke="#4A4A4A" stroke-width="5" xlink:href="#path-11"></use>
+                            </g>
+                            <g v-if="this.sleepStatus" id="augerechts" stroke-linecap="round">
+                                <use stroke="#4A4A4A" stroke-width="5" xlink:href="#path-33"></use>
+                            </g>
 
                             <!-- Mund Traurig -->
                             <path v-if="!this.happyStatus && !this.whistleStatus && !this.windStatus" d="M59,215.333091 C65.0849402,239.631043 100.862006,259 144.08739,259 C187.851338,259 220.584191,239.145382 225.45858,214.422605" id="Path" stroke="#4A4A4A" stroke-width="5" stroke-linecap="round" transform="translate(142.229290, 236.711303) scale(1, -1) translate(-142.229290, -236.711303) "></path>
@@ -175,7 +185,9 @@
                     </g>
                 </g>
             </svg>
+
         </div>
+        <p @click="sleep">sleep</p>
     </div>
 </template>
 
@@ -192,7 +204,8 @@
             whistleStatus: false,
             musicStatus: false,
             windStatus: false,
-            hairStatus: true
+            hairStatus: true,
+            sleepStatus: false
         }),
         methods: {
             toggleHappy() {
@@ -257,14 +270,22 @@
                 }, 5000);
             },
             playSound(filePath, volume) {
-                console.log("musik1")
                 let sound = new Howl({
                     html5: true,
                     src: filePath,
                     volume: volume
                 });
                 sound.play();
-                console.log("musik")
+            },
+            sleep() {
+                this.infoMessage = 'sleeping';
+                this.sleepStatus = true;
+                setTimeout(() => {
+                    this.sleepStatus = false;
+                    this.happyStatus = true;
+                    this.infoMessage = 'happy';
+                }, 5000);
+
             }
         }
     }
@@ -354,13 +375,13 @@
     }
     .musicButton {
         position: fixed;
-        left: 5%;
+        left: 15%;
         top: 3%;
 
     }
     .windButtonButton {
         position: fixed;
-        right: 10%;
+        right: 20%;
         top: 3%;
     }
     .svgCombined {
