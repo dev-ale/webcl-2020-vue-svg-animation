@@ -124,14 +124,13 @@
                             <g @click="toggleHappy" id="Group" opacity="0.801990327" fill="#F5A623">
                                 <path d="M100,80 L184,80 C239.228475,80 284,124.771525 284,180 L284,355 C284,359.418278 280.418278,363 276,363 L8,363 C3.581722,363 5.41083001e-16,359.418278 0,355 L0,180 C-6.76353751e-15,124.771525 44.771525,80 100,80 Z" id="Rectangle"></path>
 
-                                <!-- Haare normal -->
+                                <!-- Haare normal wenn haar=true && happy = true-->
                                 <rect v-if="!this.windStatus" id="Rectangle" transform="translate(211.000000, 70.000000) rotate(38.000000) translate(-211.000000, -70.000000) " x="191" y="19" width="40" height="102" rx="20"></rect>
                                 <rect v-if="!this.windStatus" id="Rectangle" transform="translate(152.500000, 66.000000) rotate(27.000000) translate(-152.500000, -66.000000) " x="133" y="2" width="39" height="128" rx="19.5"></rect>
                                 <rect v-if="!this.windStatus" id="Rectangle" transform="translate(94.500000, 70.000000) rotate(21.000000) translate(-94.500000, -70.000000) " x="75" y="6" width="39" height="128" rx="19.5"></rect>
 
                                 <!-- Haare Wind -->
-                                <!-- TODO: Haar soll wegfliegen-->
-                                <path v-if="this.windStatus" :class="{ 'animate-hair2': !hairStatus}" d="M237.411122,34.5906746 L238.423515,34.7428477 C242.993565,35.4297738 246.141459,39.6913953 245.454533,44.2614459 C245.274318,45.4603983 244.835713,46.6058687 244.169079,47.6185692 L238.147528,56.7660465 L238.147528,56.7660465 L228.561839,77.3456336 L226.328569,105.588574 C225.50606,115.990396 216.825095,124.012024 206.390804,124.012024 L204.871761,124.012024 C196.733309,124.012024 190.13579,117.414505 190.13579,109.276052 C190.13579,107.795738 190.358842,106.323873 190.797435,104.910024 L199.355686,77.321654 L199.355686,77.321654 L210.091995,53.705311 L218.331687,42.5119953 C222.729967,36.5370946 230.074355,33.4878822 237.411122,34.5906746 Z" id="hair3" transform="translate(218.118078, 78.404861) rotate(38.000000) translate(-218.118078, -78.404861) "></path>
+                                <path v-if="this.windStatus" :class="{'animate-hair-loosing': !hairStatus }" d="M237.411122,34.5906746 L238.423515,34.7428477 C242.993565,35.4297738 246.141459,39.6913953 245.454533,44.2614459 C245.274318,45.4603983 244.835713,46.6058687 244.169079,47.6185692 L238.147528,56.7660465 L238.147528,56.7660465 L228.561839,77.3456336 L226.328569,105.588574 C225.50606,115.990396 216.825095,124.012024 206.390804,124.012024 L204.871761,124.012024 C196.733309,124.012024 190.13579,117.414505 190.13579,109.276052 C190.13579,107.795738 190.358842,106.323873 190.797435,104.910024 L199.355686,77.321654 L199.355686,77.321654 L210.091995,53.705311 L218.331687,42.5119953 C222.729967,36.5370946 230.074355,33.4878822 237.411122,34.5906746 Z" id="hair3" transform="translate(218.118078, 78.404861) rotate(38.000000) translate(-218.118078, -78.404861) "></path>
                                 <path v-if="this.windStatus" d="M189.232611,11.7342122 L189.419084,11.7603928 C194.289717,12.4442238 197.68379,16.9470061 196.999959,21.8176385 C196.871673,22.7313616 196.602169,23.6195982 196.201093,24.4505525 L187.857739,41.7364199 L187.857739,41.7364199 L169.103869,73.6302559 L169.103869,113.584024 C169.103869,124.353576 160.373422,133.084024 149.603869,133.084024 C140.114333,133.084024 132.421543,125.391234 132.421543,115.901698 C132.421543,115.178673 132.46718,114.456368 132.558182,113.739093 L135.458099,90.8818949 L135.458099,90.8818949 L143.307413,64.4359449 L160.520783,34.3410965 L170.48947,19.9440781 C174.684199,13.8859495 181.935552,10.7097138 189.232611,11.7342122 Z" id="hair2" transform="translate(165.805476, 71.573638) rotate(27.000000) translate(-165.805476, -71.573638) "></path>
                                 <path v-if="this.windStatus" d="M129.156899,18.3756812 L130.360265,18.5803102 C135.73454,19.49419 139.350404,24.5917461 138.436524,29.9660206 C138.18847,31.4247577 137.61563,32.8090627 136.760378,34.0165348 L127.074496,47.6913686 L127.074496,47.6913686 C123.023043,58.6157284 119.38003,66.7980681 116.145459,72.2383877 C112.910888,77.6787073 111.333931,78.2759873 111.414588,74.0302275 L111.414588,116.399443 C111.414588,127.168995 102.684141,135.899443 91.9145881,135.899443 C82.988726,135.899443 75.7528851,128.663602 75.7528851,119.73774 C75.7528851,118.73134 75.8468884,117.72714 76.0336701,116.738226 L82.178196,84.2060535 L82.178196,84.2060535 L100.368151,45.0892343 L108.435101,28.9020454 C112.268226,21.2104735 120.684732,16.9350139 129.156899,18.3756812 Z" id="hair1" transform="translate(109.122566, 75.924538) rotate(21.000000) translate(-109.122566, -75.924538) "></path>
                             </g>
@@ -181,6 +180,9 @@
 </template>
 
 <script>
+    import {Howl} from 'howler';
+    require('howler');
+
     export default {
         data:() => ({
             color: '#EDD60C',
@@ -209,6 +211,7 @@
             },
             startMusic() {
                 this.infoMessage = 'music is playing';
+                this.playSound('despacito.wav',0.5);
                 this.musicStatus = true;
                 setTimeout(() => {
                     this.startWhistling();
@@ -223,11 +226,15 @@
                 }, 2000);
             },
             startWhistling() {
-                this.infoMessage = 'whistling';
-                this.whistleStatus = true;
+
+                setTimeout(() => {
+                    this.infoMessage = 'whistling';
+                    this.whistleStatus = true;
+                    this.playSound('whistle.wav',1);
+                }, 400);
                 setTimeout(() => {
                     this.stopMusic();
-                }, 4000);
+                }, 4500);
             },
             startWind () {
                 this.infoMessage = 'wind is blowing';
@@ -235,13 +242,23 @@
                 // TODO: Ein Haar sollte ausfallen und dann langsam wieder wachsen
                 setTimeout(() => {
                     this.hairStatus = false;
-                }, 1000);
+                }, 1500);
                 setTimeout(() => {
-                    this.hairStatus = true;
+
                     this.windStatus = false;
                     this.happyStatus = false;
                     this.infoMessage = (this.happyStatus ? 'happy' : 'not happy');
-                }, 4000);
+                }, 5000);
+            },
+            playSound(filePath, volume) {
+                console.log("musik1")
+                let sound = new Howl({
+                    html5: true,
+                    src: filePath,
+                    volume: volume
+                });
+                sound.play();
+                console.log("musik")
             }
         }
     }
@@ -249,13 +266,21 @@
 </script>
 
 <style>
-    .animate-hair {
+    .animate-hair-loosing {
         position: absolute;
-        animation: loosingHair 2s;
+        animation: loosingHair 4s;
     }
     @keyframes loosingHair {
-        0%   {    opacity: 1;    }
-        100%   {    opacity: 0;    }
+        0%   {      transform: rotateX(0deg)    }
+        100% {      transform: translateX(-180px); transform: scale(0.2); opacity: 0 }
+    }
+    .animate-hair-growing {
+        position: absolute;
+        animation: growingHair 3s;
+    }
+    @keyframes growingHair {
+        0%      {   transform: translateX(-180px); transform: scale(0.2); opacity: 0 }
+        100%    {    transform: rotateX(0deg)    }
     }
 
     .animate-radio {
