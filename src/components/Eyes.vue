@@ -238,11 +238,12 @@
             },
             startWind () {
                 this.infoMessage = 'wind is blowing';
+                this.playSound('fan.wav',1);
                 this.windStatus = true;
                 // TODO: Ein Haar sollte ausfallen und dann langsam wieder wachsen
                 setTimeout(() => {
                     this.hairStatus = false;
-                }, 1500);
+                }, 2500);
                 setTimeout(() => {
 
                     this.windStatus = false;
@@ -295,11 +296,12 @@
 
     .animate-fan {
         position: absolute;
-        animation: fanAnimation 4s infinite;
+        animation: fanAnimation 1s infinite;
     }
     @keyframes fanAnimation {
         0%   {    transform: rotate(0deg)   }
-        100% {   transform: rotate(720deg)   }
+        50%   {    transform: rotate(2720deg)   }
+        100% {   transform: rotate(0deg)   }
     }
 
     .animate-eyes{
@@ -332,11 +334,10 @@
         width: 15%;
         top: 1%;
         left:5%;
-        animation: whistle 1s infinite;
+        animation: whistle 0.8s infinite;
     }
     @keyframes whistle {
         0%   {    transform: rotateY(0deg)   }
-        90%  {    width: 2em;        }
         100% {   transform: rotateY(-20deg)   }
     }
 
