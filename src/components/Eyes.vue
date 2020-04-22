@@ -275,6 +275,8 @@
     .animate-hair-loosing {
         position: absolute;
         animation: loosingHair 4s;
+        transform-origin: center;
+        transform-box: fill-box;
     }
     @keyframes loosingHair {
         0%   {      transform: rotateX(0deg)    }
