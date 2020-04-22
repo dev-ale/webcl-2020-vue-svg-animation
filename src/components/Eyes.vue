@@ -201,6 +201,12 @@
             },
             pokeEye() {
                 this.infoMessage = 'Eye poke!';
+                this.playSound('poke.wav',1);
+                setTimeout(() => {
+                    this.playSound('ouch.mp3',1);
+                }, 800);
+
+
                 this.eyepokedStatus = true;
                 this.happyStatus = false;
                 setTimeout(() => {
@@ -226,7 +232,6 @@
                 }, 2000);
             },
             startWhistling() {
-
                 setTimeout(() => {
                     this.infoMessage = 'whistling';
                     this.whistleStatus = true;
