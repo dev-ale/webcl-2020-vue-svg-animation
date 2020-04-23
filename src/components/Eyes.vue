@@ -37,7 +37,7 @@
                             </g>
                         </g>
                     </svg>
-                    
+
                 </div>
 
             </div>
@@ -254,7 +254,7 @@
             },
             pokeEye() {
                 this.infoMessage = 'Eye poke!';
-                this.playSound('poke.wav',1);
+                this.playSound('poke.mp3',1);
                 setTimeout(() => {
                     this.playSound('ouch.mp3',1);
                 }, 800);
@@ -270,7 +270,7 @@
             },
             startMusic() {
                 this.infoMessage = 'music is playing';
-                this.playSound('despacito.wav',0.5);
+                this.playSound('despacito.mp3',0.5);
                 this.musicStatus = true;
                 setTimeout(() => {
                     this.startWhistling();
@@ -288,7 +288,7 @@
                 setTimeout(() => {
                     this.infoMessage = 'whistling';
                     this.whistleStatus = true;
-                    this.playSound('whistle.wav',1);
+                    this.playSound('whistle.mp3',1);
                 }, 400);
                 setTimeout(() => {
                     this.stopMusic();
@@ -296,7 +296,7 @@
             },
             startWind () {
                 this.infoMessage = 'wind is blowing';
-                this.playSound('fan.wav',1);
+                this.playSound('fan.mp3',1);
                 this.windStatus = true;
                 // TODO: Ein Haar sollte ausfallen und dann langsam wieder wachsen
                 setTimeout(() => {
