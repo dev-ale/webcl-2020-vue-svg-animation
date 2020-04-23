@@ -162,7 +162,7 @@
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="Apple-TV" transform="translate(-636.000000, -469.000000)">
                         <g id="happy" transform="translate(636.000000, 463.000000)">
-                            <g @click="toggleHappy" id="Group" opacity="0.801990327" fill="#F5A623">
+                            <g @click="toggleHappy" id="Group" opacity="0.801990327" :fill="color">
                                 <path d="M100,80 L184,80 C239.228475,80 284,124.771525 284,180 L284,355 C284,359.418278 280.418278,363 276,363 L8,363 C3.581722,363 5.41083001e-16,359.418278 0,355 L0,180 C-6.76353751e-15,124.771525 44.771525,80 100,80 Z" id="Rectangle"></path>
 
                                 <!-- Haare normal wenn haar=true && happy = true-->
@@ -224,7 +224,6 @@
                     </g>
                 </g>
             </svg>
-
         </div>
     </div>
 </template>
@@ -235,7 +234,7 @@
 
     export default {
         data:() => ({
-            color: '#EDD60C',
+            color: '#f54323',
             happyStatus: false,
             infoMessage: 'not happy',
             eyepokedStatus: false,
@@ -425,6 +424,7 @@
         top: 3%;
     }
     .sleepButton {
+        padding-top: 10px;
         position: fixed;
         right: 20%;
         top: 10%;

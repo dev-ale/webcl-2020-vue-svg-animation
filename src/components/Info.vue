@@ -3,7 +3,7 @@
         <!--    Typer JS Text -->
         <h2>
             Hi, <br>
-            <span class="typer" id="first-typer" data-words="play some sound, poke me in my right eye, turn on the fan" data-colors="#cd2032,#cc1e81,#6e6abb"></span>
+            <span class="typer" id="first-typer" data-words="play some sound, poke me in my right eye, turn on the fan, put me to sleep" data-colors="#cd2032,#cc1e81,#6e6abb"></span>
             <span class="cursor" data-owner="first-typer"></span>
         </h2>
     </div>
