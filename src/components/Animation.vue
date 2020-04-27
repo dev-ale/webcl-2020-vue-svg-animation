@@ -3,7 +3,7 @@
         <header>
             <div class="sleepButton" @click="sleep">
                 <div class="svgCombined">
-                    <!-- Fan Hintergrund SVG-->
+                    <!-- Bed Hintergrund SVG-->
                     <svg style="position: absolute" width="50px" height="50px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="Artboard" transform="translate(-137.000000, -201.000000)" fill-rule="nonzero">
@@ -37,7 +37,6 @@
                             </g>
                         </g>
                     </svg>
-
                 </div>
 
             </div>
@@ -104,8 +103,8 @@
                 </svg>
             </div>
             <div class="windButtonButton" @click="startWind">
-                <!-- TODO: Zeiger in Icon animieren-->
                 <div class="svgCombined">
+<!-- 1 -->
                     <!-- Fan Hintergrund SVG-->
                     <svg style="position: absolute" width="50px" height="50px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -125,9 +124,9 @@
                             </g>
                         </g>
                     </svg>
+<!-- 2 -->
                     <!-- Fan Propeller SVG-->
                     <svg style="position: absolute" :class="{ 'animate-fan': windStatus}" height="50px" viewBox="0 0 512 512" width="50px" xmlns="http://www.w3.org/2000/svg">
-                        <!--Ventilator Background-->
                         <path  d="m296 256c0-.839844-.03125-1.671875-.078125-2.5 34.546875-8.851562 60.078125-40.199219 60.078125-77.5 0-44.179688-35.820312-80-80-80h-20v120c-.839844 0-1.671875.03125-2.5.078125-8.851562-34.546875-40.199219-60.078125-77.5-60.078125-44.179688 0-80 35.820312-80 80v20h120c0 .839844.03125 1.671875.078125 2.5-34.546875 8.851562-60.078125 40.199219-60.078125 77.5 0 44.179688 35.820312 80 80 80h20v-120c.839844 0 1.671875-.03125 2.5-.078125 8.851562 34.546875 40.199219 60.078125 77.5 60.078125 44.179688 0 80-35.820312 80-80v-20zm0 0" fill="#64e1dc"/>
                         <path d="m366 176c0-49.625-40.375-90-90-90h-20c-5.523438 0-10 4.476562-10 10v83.390625c-16.683594-20.613281-42.121094-33.390625-70-33.390625-49.625 0-90 40.375-90 90v20c0 5.523438 4.476562 9.988281 10 9.988281h83.390625c-20.613281 16.6875-33.390625 42.132813-33.390625 70.011719 0 49.625 40.375 90 90 90h20c5.523438 0 10-4.476562 10-10v-83.390625c16.683594 20.613281 42.121094 33.390625 70 33.390625 49.625 0 90-40.375 90-90v-20c0-5.523438-4.476562-10-10-10h-83.390625c20.613281-16.683594 33.390625-42.121094 33.390625-70zm-90-70c38.597656 0 70 31.402344 70 70 0 28.402344-17.035156 53.550781-42.503906 64.390625-5.566406-16.921875-19.910156-29.785156-37.496094-33.375v-101.015625zm-18.097656 179.9375c-16.96875 1.023438-30.847656-11.925781-31.839844-28.035156-1.054688-17.496094 12.804688-31.902344 29.9375-31.902344 16.417969 0 30 13.316406 30 30 0 15.816406-12.351562 28.96875-28.097656 29.9375zm-151.902344-49.9375c0-38.597656 31.402344-70 70-70 28.402344 0 53.550781 17.035156 64.390625 42.503906-16.921875 5.566406-29.785156 19.910156-33.375 37.496094h-101.015625zm130 170c-38.597656 0-70-31.402344-70-70 0-28.402344 17.035156-53.550781 42.503906-64.390625 5.566406 16.921875 19.910156 29.785156 37.496094 33.375v101.015625zm170-130c0 38.597656-31.402344 70-70 70-28.402344 0-53.550781-17.035156-64.390625-42.503906 16.921875-5.566406 29.785156-19.910156 33.375-37.496094h101.015625zm0 0"/>
                     </svg>
@@ -294,13 +293,13 @@
             startWind () {
                 this.infoMessage = 'wind is blowing';
                 this.playSound('fan.mp3',1);
+<!-- 3 -->
                 this.windStatus = true;
-                // TODO: Ein Haar sollte ausfallen und dann langsam wieder wachsen
                 setTimeout(() => {
                     this.hairStatus = false;
                 }, 2500);
                 setTimeout(() => {
-
+<!-- 5 -->
                     this.windStatus = false;
                     this.happyStatus = false;
                     this.infoMessage = (this.happyStatus ? 'happy' : 'not happy');
@@ -360,6 +359,8 @@
         50% {   transform: scale(1.2,1.2)   }
         100% {   transform: scale(1,1)   }
     }
+
+/* 4 */
 
     .animate-fan {
         position: absolute;

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Eyes from './components/Eyes.vue'
+import Eyes from './components/Animation.vue'
 import Info from "./components/Info";
 
 export default {
