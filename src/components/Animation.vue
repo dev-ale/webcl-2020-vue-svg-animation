@@ -293,13 +293,13 @@
             startWind () {
                 this.infoMessage = 'wind is blowing';
                 this.playSound('fan.mp3',1);
-<!-- 3 -->
+// 3
                 this.windStatus = true;
                 setTimeout(() => {
                     this.hairStatus = false;
                 }, 2500);
                 setTimeout(() => {
-<!-- 5 -->
+// 4
                     this.windStatus = false;
                     this.happyStatus = false;
                     this.infoMessage = (this.happyStatus ? 'happy' : 'not happy');
